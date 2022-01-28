@@ -1,0 +1,7 @@
+EMPLOYÉ: Nom_Employé, Prénom_Employé, Log_Employé, Password_Employé, Admin ?, Nom_Ligue
+SUPERVISE, 1N GESTION PERSONNEL, 00 EMPLOYÉ, 1N LIGUE
+GESTION PERSONNEL: Super-Admin, Admin
+
+APPARTIENT, 1N LIGUE, 11 EMPLOYÉ
+LIGUE: Nom_Ligue, Nom_Employé, Admin
+:
