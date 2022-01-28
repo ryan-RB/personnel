@@ -16,8 +16,10 @@ public class Employe implements Serializable, Comparable<Employe>
 	private String nom, prenom, password, mail;
 	private Ligue ligue;
 	private GestionPersonnel gestionPersonnel;
+	private String dateArrive;
+	private String dateDepart;
 	
-	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password)
+	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, String dateArrive, String dateDepart)
 	{
 		this.gestionPersonnel = gestionPersonnel;
 		this.nom = nom;
@@ -25,6 +27,8 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.password = password;
 		this.mail = mail;
 		this.ligue = ligue;
+		this.dateArrive = dateArrive;
+		this.dateDepart = dateDepart;
 	}
 	
 	/**
@@ -133,11 +137,30 @@ public class Employe implements Serializable, Comparable<Employe>
 	{
 		this.password= password;
 	}
-
+	
+	public String getDateArrive()
+	{
+		return dateArrive;
+	}
+	
+	public String getDateDepart()
+	{
+		return dateDepart;
+	}
 	/**
 	 * Retourne la ligue à laquelle l'employé est affecté.
 	 * @return la ligue à laquelle l'employé est affecté.
 	 */
+	
+	public void setDateArrive(String dateArrive)
+	{
+		this.dateArrive = dateArrive;
+	}
+	
+	public void setDateDepart(String dateDepart)
+	{
+		this.dateDepart = dateDepart;
+	}
 	
 	public Ligue getLigue()
 	{
@@ -174,7 +197,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	@Override
 	public String toString()
 	{
-		String res = nom + " " + prenom + " " + mail + " (";
+		String res = nom + " " + prenom + " " + mail + " " + dateArrive + " " + dateDepart + " (";
 		if (estRoot())
 			res += "super-utilisateur";
 		else
