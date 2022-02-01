@@ -3,6 +3,7 @@ package commandLine;
 import static commandLineMenus.rendering.examples.util.InOut.getString;
 
 import java.util.ArrayList;
+import java.time.LocalDate;
 
 import commandLineMenus.List;
 import commandLineMenus.Menu;
@@ -97,11 +98,11 @@ public class LigueConsole
 		return new Option("ajouter un employÃ©", "a",
 				() -> 
 				{
-					ligue.addEmploye(getString("nom : "), 
+					   ligue.addEmploye(getString("nom : "), 
 						getString("prenom : "), getString("mail : "), 
 						getString("password : "),
-						getString("date d'arrivé : "),
-						getString("date de départ : "));
+						LocalDate.parse(getString("Date d'arrivé :(Y-M-D) ")),
+						LocalDate.parse(getString("date de départ :(Y-M-D) ")));
 				}
 		);
 	}

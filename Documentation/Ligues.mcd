@@ -1,0 +1,3 @@
+EMPLOYÉ: Nom_Employé, Prénom_Employé, email, Password_Employé, Admin ? 0 1 2
+APPARTIENT,  01 EMPLOYÉ, 0N LIGUE
+LIGUE: ID_ligue,Nom_Ligue
