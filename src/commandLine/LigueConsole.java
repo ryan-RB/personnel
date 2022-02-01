@@ -101,8 +101,8 @@ public class LigueConsole
 					   ligue.addEmploye(getString("nom : "), 
 						getString("prenom : "), getString("mail : "), 
 						getString("password : "),
-						LocalDate.parse(getString("Date d'arrivé :(Y-M-D) ")),
-						LocalDate.parse(getString("date de départ :(Y-M-D) ")));
+						LocalDate.parse(getString("Date d'arrivé (Y-M-D) : ")),
+						LocalDate.parse(getString("date de départ (Y-M-D) : ")));
 				}
 		);
 	}
