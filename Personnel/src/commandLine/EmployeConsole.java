@@ -8,6 +8,7 @@ import commandLineMenus.ListOption;
 import commandLineMenus.Menu;
 import commandLineMenus.Option;
 import personnel.Employe;
+import personnel.Ligue;
 
 public class EmployeConsole 
 {
@@ -29,8 +30,8 @@ public class EmployeConsole
 			menu.add(changerPrenom(employe));
 			menu.add(changerMail(employe));
 			menu.add(changerPassword(employe));
-			menu.add(changerDateArrive(employe));
-			menu.add(changerDateDepart(employe));
+			menu.add(Dropemploye(employe));
+			menu.add(NommeAdmin(employe));
 			menu.addBack("q");
 			return menu;
 	}
@@ -57,14 +58,15 @@ public class EmployeConsole
 		return new Option("Changer le password", "x", () -> {employe.setPassword(getString("Nouveau password : "));});
 	}
 	
-	private Option changerDateArrive(final Employe employe)
+	private Option Dropemploye(final Employe employe)
 	{
-		return new Option("Changer la date d'arrivée", "a", () -> {employe.setDateArrive(LocalDate.parse(getString("Nouvelle date d'arrivée (Y-M-D) : ")));});
+		return new Option("supprimer", "a", () -> {employe.remove();});
 	}
 	
-	private Option changerDateDepart(final Employe employe)
+	private Option NommeAdmin(final Employe employe)
 	{
-		return new Option("Changer la date de départ", "d", () -> {employe.setDateDepart(LocalDate.parse(getString("Nouvelle date de départ (Y-M-D) : ")));});
+		Ligue ligue = employe.getLigue();
+		return new Option("Nommer Admin", "d", () -> {ligue.setAdministrateur(employe);});
 	}
 
 }
