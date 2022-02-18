@@ -24,7 +24,6 @@ class testLigue
 		assertEquals(employe, ligue.getEmployes().first());
 	}
 	
-<<<<<<< HEAD
 	@Test
 	void getNom() throws SauvegardeImpossible
 	{
@@ -75,7 +74,3 @@ class testLigue
 
 
 }
-=======
-	
-}
->>>>>>> 9cb5d29cdfca19f422341f65a38e55b402323243
