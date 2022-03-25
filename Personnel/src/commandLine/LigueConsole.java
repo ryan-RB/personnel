@@ -4,6 +4,7 @@ import static commandLineMenus.rendering.examples.util.InOut.getString;
 
 import java.util.ArrayList;
 import java.time.LocalDate;
+import java.time.format.DateTimeParseException;
 
 import commandLineMenus.List;
 import commandLineMenus.Menu;
@@ -94,18 +95,36 @@ public class LigueConsole
 	}
 	
 	private Option ajouterEmploye(final Ligue ligue)
-	{
-		return new Option("ajouter un employÃ©", "a",
-				() -> 
-				{
-					   ligue.addEmploye(getString("nom : "), 
-						getString("prenom : "), getString("mail : "), 
-						getString("password : "),
-						LocalDate.parse(getString("Date d'arrivé (Y-M-D) : ")),
-						LocalDate.parse(getString("date de départ (Y-M-D) : ")), 0);
-				}
-		);
-	}
+    {
+        return new Option("ajouter un employÃ©", "a",
+                () -> 
+                {
+                String nom,prenom,mail,password;
+                LocalDate Arrive = null , Depart = null;
+
+                      nom= getString("nom : ");
+                        prenom= getString("prenom : ");
+                        mail= getString("mail : ");
+                        password= getString("password : ");
+                        
+                        Arrive= parseDate("Date d'arrivé (Y-M-D) : ");
+                        Depart= parseDate("Date de départ (Y-M-D) : ");
+                       ligue.addEmploye(nom, prenom, mail, password, Arrive, Depart);
+          
+    }
+        );
+    }
+
+    private LocalDate parseDate(String string){
+    	while(true)
+    		try {
+    		return LocalDate.parse(getString(string));
+    	 	}
+    	catch(DateTimeParseException e) {
+             System.out.println("Erreur!");
+    	 	}
+    }
+
 	
 	private Menu gererEmployes(Ligue ligue)
 	{
