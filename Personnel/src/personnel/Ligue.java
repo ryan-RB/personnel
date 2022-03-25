@@ -22,6 +22,7 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	private SortedSet<Employe> employes;
 	private Employe administrateur;
 	private GestionPersonnel gestionPersonnel;
+	private LocalDate dateDepart;
 	
 	/**
 	 * Crée une ligue.
@@ -72,6 +73,9 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	{
 		return administrateur;
 	}
+	public int getId() {
+		return this.id;
+	}
 
 	/**
 	 * Fait de administrateur l'administrateur de la ligue.
@@ -106,19 +110,20 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	 * @param prenom le prénom de l'employé.
 	 * @param mail l'adresse mail de l'employé.
 	 * @param password le password de l'employé.
+	 * @param id 
+	 * @param id 
 	 * @return l'employé créé. 
 	 */
 
-	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart)
-	{
-		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrive, dateDepart);
-		employes.add(employe);
-		/*try {
-		employe.setId(gestionPersonnel.insert(employe));
-	} catch (SauvegardeImpossible e) {
-		e.printStackTrace();
-	}*/
-		return employe;
+	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart, int id) {
+        Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, dateArrive, dateDepart, id);
+        employes.add(employe);
+        return employe;
+    }
+	public Employe addEmploye(String nom, String prenom, String mail, String password, LocalDate date_arrivee,LocalDate date_depart) {
+		Employe employe = new Employe(this.gestionPersonnel, this, nom, prenom, mail, password, date_arrivee, date_depart);
+        employes.add(employe);
+        return employe;
 	}
 	
 	void remove(Employe employe)
@@ -142,7 +147,10 @@ public class Ligue implements Serializable, Comparable<Ligue>
 	{
 		return getNom().compareTo(autre.getNom());
 	}
-	
+		public void removeAdmin()
+	{
+		administrateur = gestionPersonnel.getRoot();
+	}
 	@Override
 	public String toString()
 	{

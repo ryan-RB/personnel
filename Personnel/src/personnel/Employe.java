@@ -20,6 +20,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	private GestionPersonnel gestionPersonnel;
 	private LocalDate dateDepart;
 	private LocalDate dateArrive;
+	private int id;
 	
 	Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrive, LocalDate dateDepart)
 	{
@@ -30,9 +31,20 @@ public class Employe implements Serializable, Comparable<Employe>
 		this.mail = mail;
 		this.ligue = ligue;
 		this.dateArrive = dateArrive;
-		this.dateDepart = dateDepart;
+		this.dateDepart = dateDepart;	 
 	}
-	
+		Employe(GestionPersonnel gestionPersonnel, Ligue ligue, String nom, String prenom, String mail, String password, LocalDate dateArrivee, LocalDate datedepart, int id)
+	{
+		this.nom = nom;
+		this.prenom = prenom;
+		this.password = password;
+		this.mail = mail;
+		this.ligue = ligue;
+		this.dateDepart = dateArrivee;
+		this.dateArrive = datedepart;	
+		this.gestionPersonnel = gestionPersonnel;
+		this.id = id;
+	}
 	/**
 	 * Retourne vrai ssi l'employé est administrateur de la ligue 
 	 * passée en paramètre.
@@ -51,7 +63,9 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * Retourne vrai ssi l'employé est le root.
 	 * @return vrai ssi l'employé est le root.
 	 */
-	
+	public int getid() {
+		return this.id;
+	}
 	public boolean estRoot()
 	{
 		return gestionPersonnel.getRoot() == this;
@@ -174,7 +188,7 @@ public class Employe implements Serializable, Comparable<Employe>
 	 * récupère les droits d'administration sur sa ligue.
 	 */
 	
-	public void remove()
+	public void remove() throws SauvegardeImpossible
 	{
 		Employe root = gestionPersonnel.getRoot();
 		if (this != root)
@@ -206,4 +220,6 @@ public class Employe implements Serializable, Comparable<Employe>
 			res += ligue.toString();
 		return res + ")";
 	}
+
+
 }

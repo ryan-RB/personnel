@@ -9,6 +9,7 @@ import commandLineMenus.Menu;
 import commandLineMenus.Option;
 import personnel.Employe;
 import personnel.Ligue;
+import personnel.SauvegardeImpossible;
 
 public class EmployeConsole 
 {
@@ -60,7 +61,12 @@ public class EmployeConsole
 	
 	private Option Dropemploye(final Employe employe)
 	{
-		return new Option("supprimer", "a", () -> {employe.remove();});
+		return new Option("supprimer", "a", () -> {try {
+			employe.remove();
+		} catch (SauvegardeImpossible e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}});
 	}
 	
 	private Option NommeAdmin(final Employe employe)

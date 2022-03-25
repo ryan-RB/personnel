@@ -102,7 +102,7 @@ public class LigueConsole
 						getString("prenom : "), getString("mail : "), 
 						getString("password : "),
 						LocalDate.parse(getString("Date d'arrivé (Y-M-D) : ")),
-						LocalDate.parse(getString("date de départ (Y-M-D) : ")));
+						LocalDate.parse(getString("date de départ (Y-M-D) : ")), 0);
 				}
 		);
 	}
@@ -122,7 +122,12 @@ public class LigueConsole
 	{
 		return new List<>("Supprimer un employÃ©", "s", 
 				() -> new ArrayList<>(ligue.getEmployes()),
-				(index, element) -> {element.remove();}
+				(index, element) -> {try {
+					element.remove();
+				} catch (SauvegardeImpossible e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}}
 				);
 	}
 	

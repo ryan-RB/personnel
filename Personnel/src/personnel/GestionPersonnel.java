@@ -35,7 +35,12 @@ public class GestionPersonnel implements Serializable
 	{
 		if (gestionPersonnel == null)
 		{
-			gestionPersonnel = passerelle.getGestionPersonnel();
+			try {
+				gestionPersonnel = passerelle.getGestionPersonnel();
+			} catch (SauvegardeImpossible e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (gestionPersonnel == null)
 				gestionPersonnel = new GestionPersonnel();
 		}
@@ -112,5 +117,29 @@ public class GestionPersonnel implements Serializable
 	public Employe getRoot()
 	{
 		return root;
+	}
+
+	void delete(Employe employe)
+	{
+		try {
+			passerelle.deleteEmploye(employe);
+		} catch (SauvegardeImpossible e) {
+			
+			e.printStackTrace();
+		}
+	}
+	void delete(Ligue ligue)
+	{
+		try {
+			passerelle.deleteLigue(ligue);
+		} catch (SauvegardeImpossible e) {
+			
+			e.printStackTrace();
+		}
+	}
+
+	public int insert(Employe employe) {
+		// TODO Auto-generated method stub
+		return 0;
 	}
 }
