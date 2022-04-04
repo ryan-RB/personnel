@@ -77,13 +77,13 @@ public class Serialization implements personnel.Passerelle
 	}
 
 	@Override
-	public void deleteLigue(Ligue ligue) throws SauvegardeImpossible {
+	public void delete(Ligue ligue) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteEmploye(Employe employe) throws SauvegardeImpossible {
+	public void delete(Employe employe) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
 		
 	}

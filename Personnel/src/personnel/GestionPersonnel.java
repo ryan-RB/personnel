@@ -122,7 +122,7 @@ public class GestionPersonnel implements Serializable
 	void delete(Employe employe)
 	{
 		try {
-			passerelle.deleteEmploye(employe);
+			passerelle.delete(employe);
 		} catch (SauvegardeImpossible e) {
 			
 			e.printStackTrace();
@@ -131,7 +131,7 @@ public class GestionPersonnel implements Serializable
 	void delete(Ligue ligue)
 	{
 		try {
-			passerelle.deleteLigue(ligue);
+			passerelle.delete(ligue);
 		} catch (SauvegardeImpossible e) {
 			
 			e.printStackTrace();

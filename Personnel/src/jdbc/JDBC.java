@@ -59,13 +59,12 @@ public class JDBC implements Passerelle
                     String    prenom = employé.getString("prénom_employé"); 
                     String    mail = employé.getString("email");
                     String    psw = employé.getString("password_employé");
-                    int 	type = employé.getType();
                     LocalDate    arrive = employé.getDate("date_entrée") != null ? LocalDate.parse(employé.getString("date-entrée")) : null;
                     LocalDate    depart = employé.getDate("date_sortie") != null ? LocalDate.parse(employé.getString("date_sortie")) : null;
 
                     Employe emp = ligue.addEmploye(nom, prenom, mail, psw, arrive, depart, id);
 
-                    if (employé.getBoolean("admin_ligue"))
+                    if (employé.getInt("type")== 1)
                         ligue.setAdministrateur(emp);
         }
             }
@@ -130,6 +129,7 @@ public class JDBC implements Passerelle
 		
 	}
 
+	// TODO a supprimer
 	@Override
 	public int insertRoot(Employe employe) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
@@ -143,13 +143,13 @@ public class JDBC implements Passerelle
 	}
 
 	@Override
-	public void deleteLigue(Ligue ligue) throws SauvegardeImpossible {
+	public void delete(Ligue ligue) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
 		
 	}
 
 	@Override
-	public void deleteEmploye(Employe employe) throws SauvegardeImpossible {
+	public void delete(Employe employe) throws SauvegardeImpossible {
 		// TODO Auto-generated method stub
 		
 	}
